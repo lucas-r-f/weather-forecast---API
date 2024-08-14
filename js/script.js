@@ -21,12 +21,16 @@ const getWeatherData = async(city) => {
     const res = await fetch(apiWeatherURL);
     const data = await res.json();
 
-    console.log(data);
-}
+    return data;
+};
 
-const showWeatherData = (city) => {
-    getWeatherData(city);
-}
+const showWeatherData = async (city) => {
+    const data = getWeatherData(city);
+
+    console.log(getWeatherData);
+    cityElement.innerText = data.name;
+    descElement.innerText = data.weather[0].description;
+};
 
 //Eventos
 
@@ -36,4 +40,4 @@ searchBtn.addEventListener("click", (e) => {
     const city = cityInput.value;  
 
     showWeatherData(city);
-})
+});
